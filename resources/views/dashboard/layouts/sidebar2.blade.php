@@ -8,16 +8,6 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link {{ Request::is('dasboard/akun') ? 'active' : '' }}" href="/dashboard/akun">
-            <span data-feather="file-text"></span>
-            Account
-          </a>
-        <li class="nav-item">
-          <a class="nav-link {{ Request::is('dasboard/store') ? 'active' : '' }}" href="/dashboard/store">
-            <span data-feather="shopping-bag"></span>
-            Store
-          </a>
-        <li class="nav-item">
           <a class="nav-link {{ Request::is('dasboard/akun') ? 'active' : '' }}" href="/dashboard/settings">
             <span data-feather="settings"></span>
             Settings

@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Akun;
+use App\Models\Store;
 
-class DashboardAkunController extends Controller
+class DashboardStoreController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class DashboardAkunController extends Controller
      */
     public function index()
     {
-        return view('dashboard.akun.index');
+        return view('dashboard.store.index');
     }
 
     /**

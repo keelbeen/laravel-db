@@ -2,9 +2,10 @@
 
 
 use App\Http\Controllers\DashboardAkunController;
-use App\Models\Post;
+use App\Http\Controllers\DashboardStoreController;
+use App\Http\Controllers\DashboardMainController;
+use App\Http\Controllers\DashboardSettingsController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PostController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 
@@ -33,8 +34,6 @@ Route::get('/about', function () {
         "image" => "Kelvin.jpeg"
     ]);
 });
-Route::get('/posts', [PostController::class, 'index']);
-Route::get('post/{slug}', [PostController::class, 'show']);
 
 
 
@@ -51,4 +50,19 @@ Route::get('/dashboard', function() {
 })->middleware('auth');
 
 Route::resource('/dashboard/akun', DashboardAkunController::class)
+->middleware('auth');
+Route::resource('/dashboard/settings', DashboardSettingsController::class)
+->middleware('auth');
+Route::resource('/dashboard/store', DashboardStoreController::class)
+->middleware('auth');
+
+Route::get('/dashboard2', function() {
+    return view('dashboard2.index');
+})->middleware('auth');
+
+Route::resource('/dashboard2/akun', DashboardAkunController::class)
+->middleware('auth');
+Route::resource('/dashboard2/store', DashboardStoreController::class)
+->middleware('auth');
+Route::resource('/dashboard2/settings', DashboardSettingsController::class)
 ->middleware('auth');

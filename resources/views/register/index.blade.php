@@ -9,19 +9,72 @@
             
             <form action="/register" method="post">
                 @csrf
-              <div class="form-floating"> 
-                <input type="text" name="name" class="form-control rounded-top @error('name') is-invalid @enderror" id="name" placeholder="Name" required value="{{ old('name') }}">
-                <label for="name">Name</label>
-                @error ('name')
+                <div class="form-floating"> 
+                  <input type="text" name="firstname" class="form-control rounded-top @error('firstname') is-invalid @enderror" id="firstname" placeholder="Firstname" required value="{{ old('firstname') }}">
+                  <label for="firstname">First name</label>
+                  @error ('firstname')
+                  <div class="invalid-feedback">
+                      {{ $message }}
+                    </div>
+                  @enderror              
+                </div>
+                <div class="form-floating">
+                  <input type="text" name="lastname" class="form-control @error('lastname') is-invalid @enderror" id="lastname" placeholder="Lastname" required value="{{ old('lastname') }}">
+                  <label for="lastname">Last name</label>
+                  @error ('lastname')
+                  <div class="invalid-feedback">
+                      {{ $message }}
+                    </div>
+                  @enderror              
+                </div>
+              <div class="form-floating">
+                <input type="text" name="username" class="form-control @error('username') is-invalid @enderror" id="username" placeholder="Username" required value="{{ old('username') }}">
+                <label for="username">Username</label>
+                @error ('username')
                 <div class="invalid-feedback">
                     {{ $message }}
                   </div>
                 @enderror              
               </div>
               <div class="form-floating">
-                <input type="text" name="username" class="form-control @error('username') is-invalid @enderror" id="username" placeholder="Username" required value="{{ old('username') }}">
-                <label for="username">Username</label>
-                @error ('username')
+                <input type="date" name="dateofbirth" class="form-control @error('dateofbirth') is-invalid @enderror" id="dateofbirth" placeholder="1999-1-12" required value="{{ old('dateofbirth') }}"> 
+                <label for="email">Date of birth</label>
+                @error ('email')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                  </div>
+                @enderror              
+              <div class="form-floating">
+                <input type="number" name="phone" class="form-control @error('phone') is-invalid @enderror" id="phone" placeholder="1999-1-12" required value="{{ old('phone') }}"> 
+                <label for="phone">Phone number</label>
+                @error ('phone')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                  </div>
+                @enderror              
+              </div>
+              <div class="form-floating">
+                <input type="file" name="profilpicture" class="form-control @error('profilpicture') is-invalid @enderror" id="profilpicture"  required value="{{ old('profilpicture') }}"> 
+                <label for="profilpicture">Picture</label>
+                @error ('profilpicture')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                  </div>
+                @enderror              
+              </div>
+              <div class="form-floating">
+                <input type="text" name="store" class="form-control @error('store') is-invalid @enderror" id="store"  placeholder="Nama toko" required value="{{ old('store') }}"> 
+                <label for="store">Nama toko</label>
+                @error ('store')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                  </div>
+                @enderror              
+              </div>
+              <div class="form-floating">
+                <input type="text" name="storeAddress" class="form-control @error('storeAddress') is-invalid @enderror" id="storeAddress"  placeholder="alamat toko" required value="{{ old('storeAddress') }}"> 
+                <label for="storeAddress">Alamat toko</label>
+                @error ('storeAddress')
                 <div class="invalid-feedback">
                     {{ $message }}
                   </div>

@@ -41,7 +41,13 @@ class RegisterController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'name' => 'required|max:255',
+            'firstname' => 'required|max:255',
+            'lastname' => 'required|max:255',
+            'dateofbirth' => 'required',
+            'phone' => 'required|max:12',
+            'profilpicture' => 'required',
+            'store' => 'required',
+            'storeAddress' => 'required',
             'username' => ['required', 'min:3', 'max:255', 'unique:users'],
             'email' => 'required|email:dns|unique:users',
             'password' => 'required|min:5|max:255'
@@ -55,6 +61,34 @@ class RegisterController extends Controller
         // $request->session()->flash('success', 'Registration successfull! Please login');
         
         return redirect('/login')->with('success', 'Registration successfull! Please login');
+
+        // menyimpan data file yang diupload ke variabel $file
+		$profilpicture = $request->profilpicture('profilpicture');
+
+        // nama file
+echo 'File Name: '.$profilpicture->getClientOriginalName();
+echo '<br>';
+
+        // ekstensi file
+echo 'File Extension: '.$profilpicture->getClientOriginalExtension();
+echo '<br>';
+
+        // real path
+echo 'profilpicture Real Path: '.$profilpicture->getRealPath();
+echo '<br>';
+
+        // ukuran file
+echo 'File Size: '.$profilpicture->getSize();
+echo '<br>';
+
+        // tipe mime
+echo 'File Mime Type: '.$profilpicture->getMimeType();
+
+        // isi dengan nama folder tempat kemana file diupload
+$tujuan_upload = 'img';
+
+      // upload file
+$profilpicture->move($tujuan_upload,$profilpicture->getClientOriginalName());
     }
 
     /**

@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Akun;
+use App\Models\User;
 
-class DashboardAkunController extends Controller
+class DashboardController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,9 @@ class DashboardAkunController extends Controller
      */
     public function index()
     {
-        return view('dashboard.akun.index');
+        return view('dashboard.index')->with([
+
+        ]);
     }
 
     /**
@@ -35,7 +37,9 @@ class DashboardAkunController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->except(['_token']);
+        User::insert($data);
+        return redirect('/');
     }
 
     /**
@@ -46,7 +50,10 @@ class DashboardAkunController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = User::findOrFail($id);
+        return view('show')->with([
+            'data' => $data
+        ]);
     }
 
     /**
@@ -69,7 +76,10 @@ class DashboardAkunController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $item = User::findOrfail($id);
+        $data = $request->except(['_token']);
+        $item->update($data);
+        return redirect('/');
     }
 
     /**
@@ -80,6 +90,8 @@ class DashboardAkunController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $item = User::findOrfail($id);
+        $item->delete();
+        return redirect('/');
     }
 }
